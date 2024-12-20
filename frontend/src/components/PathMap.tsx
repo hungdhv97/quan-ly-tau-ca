@@ -146,7 +146,7 @@ const Map: React.FC = () => {
     }, []);
 
     return (
-        <MapContainer center={[15.0, 110.0]} zoom={6} style={{ height: "100vh", width: "100%" }}>
+        <MapContainer center={[19.2, 106.0]} zoom={7} style={{ height: "100vh", width: "100%" }}>
             <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

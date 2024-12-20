@@ -102,8 +102,8 @@ class RandomVesselPositionAPIView(APIView):
                 .first()
             )
             if last_position:
-                latitude = last_position.latitude + random.uniform(-0.2, 0.2)
-                longitude = last_position.longitude + random.uniform(-0.2, 0.2)
+                latitude = last_position.latitude + random.uniform(-0.02, 0.02)
+                longitude = last_position.longitude + random.uniform(-0.02, 0.02)
             else:
                 latitude, longitude = generate_random_coordinates()
 
