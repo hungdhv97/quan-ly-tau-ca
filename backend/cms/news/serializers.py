@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Link
+from .models import Link, Group
 from .models import (
     NewsContent,
     NewsPost,
@@ -33,3 +33,11 @@ class LinkSerializer(serializers.ModelSerializer):
     class Meta:
         model = Link
         fields = ['id', 'title', 'url', 'created_at']
+
+
+class GroupSerializer(serializers.ModelSerializer):
+    links = LinkSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Group
+        fields = ['id', 'name', 'created_at', 'links']

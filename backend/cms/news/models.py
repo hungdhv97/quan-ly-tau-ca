@@ -47,7 +47,16 @@ class NewsContent(models.Model):
         return f"{self.post.title} - {self.get_content_type_display()}"
 
 
+class Group(models.Model):
+    name = models.CharField(max_length=200, verbose_name="Group Name")
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Created At")
+
+    def __str__(self):
+        return self.name
+
+
 class Link(models.Model):
+    group = models.ForeignKey(Group, on_delete=models.CASCADE, related_name="links", verbose_name="Group")
     title = models.CharField(max_length=200, verbose_name="Title")
     url = models.URLField(verbose_name="URL")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Created At")

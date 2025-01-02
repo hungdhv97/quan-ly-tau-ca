@@ -8,8 +8,7 @@ export const ENDPOINTS = {
         NEWS_POST: (newsId: number) => `api/news/news-posts/${newsId}/`,
         ABOUT_PAGE: `api/introduction/about-data/`,
         LINKS: `api/news/links/`,
-        PAGED_PRODUCT: (params: string) =>
-            `api/products/products/filter/products/?${params}`,
+        GROUPS: `api/news/groups/`,
         PAGED_ORDER: (params: string) => `api/orders/orders/filter/?${params}`,
         CATEGORY: (categorySlug: string) => `api/categories/${categorySlug}/`,
         CATEGORIES: `api/categories/`,

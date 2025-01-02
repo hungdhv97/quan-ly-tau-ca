@@ -26,6 +26,19 @@ export const useFetchLinks = () => {
     });
 };
 
+export const useFetchGroups = () => {
+    return useQuery<GroupResponse[], Error>({
+        queryKey: ["groups"],
+        queryFn: async () => {
+            const { data } = await axiosInstanceWithToken.get<GroupResponse[]>(
+                ENDPOINTS.GET.GROUPS,
+            );
+            return data;
+        },
+    });
+};
+
+
 export const useFetchNewsPost = (newsId: number) => {
     return useQuery<NewsPostResponse, Error>({
         queryKey: ["news", newsId],

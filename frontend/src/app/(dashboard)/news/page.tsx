@@ -2,13 +2,13 @@
 
 import React from "react";
 import Link from "next/link";
-import { useFetchLinks, useFetchNews } from "@/queries/news";
+import { useFetchGroups, useFetchNews } from "@/queries/news";
 
 const NewsComponent: React.FC = () => {
     const { data: news } = useFetchNews();
-    const { data: links } = useFetchLinks();
+    const { data: groups } = useFetchGroups();
     if (!news) return null;
-    if (!links) return null;
+    if (!groups) return null;
     return (
         <div className="container">
             <div className="news-container p-6 bg-gray-100">
@@ -49,22 +49,26 @@ const NewsComponent: React.FC = () => {
                             );
                         })}
                     </div>
-                    <div className="links-container bg-white shadow-lg rounded-lg p-4">
-                        <h3 className="text-xl font-semibold mb-4">VĂN BẢN BAN HÀNH</h3>
-                        <ul className="space-y-2">
-                            {links.map((link) => (
-                                <Link
-                                    key={link.id}
-                                    href={link.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    <li className="mt-2 text-justify text-blue-700 hover:bg-blue-700 hover:text-white rounded-lg p-2">
-                                        {link.title}
-                                    </li>
-                                </Link>
-                            ))}
-                        </ul>
+                    <div className="bg-white shadow-lg rounded-lg p-4">
+                        {groups.map((group) => (
+                            <div key={group.id} className="mb-6">
+                                <h3 className="text-xl font-semibold mb-4">{group.name}</h3>
+                                <ul className="space-y-2">
+                                    {group.links.map((link) => (
+                                        <Link
+                                            key={link.id}
+                                            href={link.url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            <li className="mt-2 text-justify text-blue-700 hover:bg-blue-700 hover:text-white rounded-lg p-2">
+                                                {link.title}
+                                            </li>
+                                        </Link>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>

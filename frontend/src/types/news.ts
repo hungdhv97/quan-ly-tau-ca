@@ -21,3 +21,9 @@ type LinkResponse = {
     title: string;
     url: string;
 };
+
+type GroupResponse = {
+    id: number;
+    name: string;
+    links: LinkResponse[];
+}

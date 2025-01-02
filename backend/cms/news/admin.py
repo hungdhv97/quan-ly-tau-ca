@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Link
+from .models import Link, Group
 from .models import (
     NewsContent,
     NewsPost,
@@ -22,3 +22,15 @@ class NewsPostAdmin(admin.ModelAdmin):
 class LinkAdmin(admin.ModelAdmin):
     list_display = ('title', 'url', 'created_at')
     search_fields = ('title', 'url')
+
+
+class LinkInline(admin.TabularInline):
+    model = Link
+    extra = 1
+
+
+@admin.register(Group)
+class GroupAdmin(admin.ModelAdmin):
+    inlines = [LinkInline]
+    list_display = ('name', 'created_at')
+    search_fields = ('name',)

@@ -1,13 +1,18 @@
 from rest_framework import viewsets
 
+from .models import Group, Link
 from .models import (
     NewsContent,
-    NewsPost, Link,
-)
+    NewsPost, )
+from .serializers import GroupSerializer, LinkSerializer
 from .serializers import (
     NewsContentSerializer,
-    NewsPostSerializer, LinkSerializer,
-)
+    NewsPostSerializer, )
+
+
+class GroupViewSet(viewsets.ModelViewSet):
+    queryset = Group.objects.prefetch_related('links').all()
+    serializer_class = GroupSerializer
 
 
 class NewsPostViewSet(viewsets.ModelViewSet):
